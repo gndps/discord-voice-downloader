@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Discord Voice Downloader",
+  "version": "1.0",
+  "description": "List and download Discord voice messages shown on a page.",
+  "permissions": ["activeTab", "scripting", "downloads", "storage"],
+  "host_permissions": [
+    "*://*.discord.com/*",
+    "*://*.discordapp.com/*",
+    "*://cdn.discordapp.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.discord.com/*", "*://*.discordapp.com/*"],
+      "js": ["content_script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
